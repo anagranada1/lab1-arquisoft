@@ -1,0 +1,47 @@
+package com.udea.lab1arquisoft.controller;
+
+import com.udea.lab12025.DTO.CustomerDTO;
+import com.udea.lab12025.service.CustomerService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/customers")
+public class CustomerController {
+    private CustomerService customerService;
+
+    public CustomerController (CustomerService customerService){
+        this.customerService=customerService;
+
+    }
+    //obtener todos los clientes
+    //Recursos HTTP --> URL
+    //Metodos HTTP --> GET, POST, DELETE
+    //Representacion del recurso JSON, XML,  texto plano
+    //codigos de respuesta HTTP(200 OK),(201 CREATE), 404 (NOT FOUND)
+
+    @GetMapping
+    public ResponseEntity<List<CustomerDTO>> getAllCustomers(){
+        return ResponseEntity.ok(customerService.getAllCustomers());
+
+    }
+    //Obtener un cliente por un id
+    @GetMapping("/{id}")
+    public ResponseEntity<CustomerDTO>getCustomerById(@PathVariable Long id){
+        return ResponseEntity.ok(customerService.getCustomerById(id));
+
+    }
+    //Crear un nuevo cliente
+    @PostMapping
+    public ResponseEntity<CustomerDTO>createCustomer(@RequestBody CustomerDTO customerDTO){
+        if (customerDTO.getBalance()==null){
+            throw new IllegalArgumentException("El saldo no puede ser nulo. ");
+
+        }
+        return ResponseEntity.ok(customerService.createCustomer(customerDTO));
+    }
+
+
+}
