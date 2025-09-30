@@ -1,4 +1,4 @@
-package com.udea.lab12025.entity;
+package com.udea.lab1arquisoft.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

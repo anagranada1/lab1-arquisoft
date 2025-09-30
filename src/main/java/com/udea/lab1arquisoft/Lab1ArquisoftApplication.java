@@ -1,13 +1,13 @@
-package com.udea.lab12025;
+package com.udea.lab1arquisoft;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Lab12025Application {
+public class Lab1ArquisoftApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Lab12025Application.class, args);
+		SpringApplication.run(Lab1ArquisoftApplication.class, args);
 	}
 
 }

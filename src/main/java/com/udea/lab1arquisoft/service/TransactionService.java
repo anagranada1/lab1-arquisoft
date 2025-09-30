@@ -1,10 +1,10 @@
-package com.udea.lab12025.service;
+package com.udea.lab1arquisoft.service;
 
-import com.udea.lab12025.DTO.TransactionDTO;
-import com.udea.lab12025.entity.Customer;
-import com.udea.lab12025.entity.Transaction;
-import com.udea.lab12025.repository.CustomerRepository;
-import com.udea.lab12025.repository.TransactionRepository;
+import com.udea.lab1arquisoft.DTO.TransactionDTO;
+import com.udea.lab1arquisoft.entity.Customer;
+import com.udea.lab1arquisoft.entity.Transaction;
+import com.udea.lab1arquisoft.repository.CustomerRepository;
+import com.udea.lab1arquisoft.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

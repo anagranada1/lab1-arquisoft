@@ -1,6 +1,6 @@
-package com.udea.lab12025.repository;
+package com.udea.lab1arquisoft.repository;
 
-import com.udea.lab12025.entity.Transaction;
+import com.udea.lab1arquisoft.entity.Transaction;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

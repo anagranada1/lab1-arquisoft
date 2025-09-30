@@ -1,9 +1,9 @@
-package com.udea.lab12025.service;
+package com.udea.lab1arquisoft.service;
 
-import com.udea.lab12025.DTO.CustomerDTO;
-import com.udea.lab12025.entity.Customer;
-import com.udea.lab12025.mapper.CustomerMapper;
-import com.udea.lab12025.repository.CustomerRepository;
+import com.udea.lab1arquisoft.DTO.CustomerDTO;
+import com.udea.lab1arquisoft.entity.Customer;
+import com.udea.lab1arquisoft.mapper.CustomerMapper;
+import com.udea.lab1arquisoft.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

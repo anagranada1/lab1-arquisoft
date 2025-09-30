@@ -1,7 +1,7 @@
-package com.udea.lab12025.mapper;
+package com.udea.lab1arquisoft.mapper;
 
-import com.udea.lab12025.DTO.CustomerDTO;
-import com.udea.lab12025.entity.Customer;
+import com.udea.lab1arquisoft.DTO.CustomerDTO;
+import com.udea.lab1arquisoft.entity.Customer;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

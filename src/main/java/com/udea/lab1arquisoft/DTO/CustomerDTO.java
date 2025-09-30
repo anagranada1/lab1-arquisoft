@@ -1,4 +1,4 @@
-package com.udea.lab12025.DTO;
+package com.udea.lab1arquisoft.DTO;
 
 public class CustomerDTO {
     private Long id;
