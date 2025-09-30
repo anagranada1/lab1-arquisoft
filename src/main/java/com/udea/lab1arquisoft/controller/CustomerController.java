@@ -1,7 +1,7 @@
 package com.udea.lab1arquisoft.controller;
 
-import com.udea.lab12025.DTO.CustomerDTO;
-import com.udea.lab12025.service.CustomerService;
+import com.udea.lab1arquisoft.DTO.CustomerDTO;
+import com.udea.lab1arquisoft.service.CustomerService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
