@@ -51,6 +51,7 @@ public class TransactionService {
         transaction.setSenderAccountNumber(sender.getAccountNumber());
         transaction.setReceiverAccountNumber(receiver.getAccountNumber());
         transaction.setAmount(transactionDTO.getAmount());
+        transaction.setTransactionDate(java.time.LocalDateTime.now());
 
         transaction = transactionRepository.save(transaction);
 
