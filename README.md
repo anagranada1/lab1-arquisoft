@@ -11,10 +11,6 @@ Este repositorio contiene:
 - **Backend:** Spring Boot (Java 21, Maven, JPA, MySQL, MapStruct, Lombok)  
 - **Frontend:** React + Vite (app separada en `frontend/`) que consume la API del backend
 
-Puedes correrlo de dos formas:
-1) **Modo Dev (recomendado):** Front y Back separados con proxy → mejor DX  
-2) **Modo Producción (single JAR):** El backend sirve el build del front
-
 ---
 
 ## ✅ Requisitos
@@ -44,12 +40,6 @@ Puedes correrlo de dos formas:
    # Zona horaria recomendada
    spring.jackson.time-zone=America/Bogota
    ```
-3. Si ves el error `transaction_date cannot be null`, asegúrate de setear la fecha al guardar transacciones (en `TransactionService`):
-   ```java
-   transaction.setTransactionDate(java.time.LocalDateTime.now());
-   ```
-   *(o usa `@PrePersist` en la entidad `Transaction` para asignarlo automáticamente).*
-
 ---
 
 ## 🌳 Estructura (resumen)
@@ -60,7 +50,7 @@ backend/
   src/main/java/com/udea/lab1arquisoft/...
   src/main/resources/
     application.properties
-    static/                # (solo en producción, cuando copies el build del front)
+    static/                
 frontend/
   package.json
   vite.config.js
@@ -112,54 +102,7 @@ Luego:
 cd frontend
 npm install
 npm run dev
-# Front en http://localhost:5173
 ```
-
-> En desarrollo, todas las llamadas a `/api/...` se proxyean al backend (`:8080`) → no necesitas CORS.
-
----
-
-## 📦 Modo Producción (backend sirve el front)
-
-1) **Construye el front**
-   ```bash
-   cd frontend
-   npm install
-   npm run build   # genera frontend/dist
-   ```
-
-2) **Copia el build al backend**
-   Copia el **contenido** de `frontend/dist` a `src/main/resources/static/`:
-   ```
-   src/main/resources/static/index.html
-   src/main/resources/static/assets/...
-   ```
-
-3) **Forward del SPA (rutas de React)**
-   Crea el controlador para reenviar rutas del front a `index.html`:
-   ```java
-   // src/main/java/com/udea/lab1arquisoft/web/SpaForwardController.java
-   package com.udea.lab1arquisoft.web;
-
-   import org.springframework.stereotype.Controller;
-   import org.springframework.web.bind.annotation.GetMapping;
-
-   @Controller
-   public class SpaForwardController {
-       @GetMapping({"/customers", "/customers/**", "/transactions", "/transactions/**"})
-       public String forwardSpa() {
-           return "forward:/index.html";
-       }
-   }
-   ```
-
-4) **Arranca el backend**
-   ```bash
-   ./mvnw spring-boot:run
-   # App completa en http://localhost:8080  (React en /customers y /transactions)
-   ```
-
-> Si aparece “Whitelabel/Error Thymeleaf template not found” al abrir `/customers` o `/transactions`, es porque hay un `@Controller` devolviendo `"customers"`/`"transactions"` como vista. Elimínalo o usa el forward anterior.
 
 ---
 
@@ -205,7 +148,7 @@ curl -X POST http://localhost:8080/api/transactions   -H "Content-Type: applicat
 ```bash
 curl http://localhost:8080/api/transactions/123-456
 ```
-En la UI, abre **Transacciones** y busca por `123-456` o `987-654`.
+En la UI, abre **Transacciones** y busca por `123456` o `987654`.
 
 ---
 
