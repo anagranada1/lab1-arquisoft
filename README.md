@@ -1,5 +1,10 @@
 # 🏦 Lab1 Arquisoft — Guía de ejecución (Backend + Frontend)
 
+Laboratorio realizado por:
+Ana María Granada Rodas  
+Jesus Estiven Torres Quintero   
+Juan Pablo Ramos Vélez 
+
 Este repositorio contiene:
 
 - **Backend:** Spring Boot (Java 21, Maven, JPA, MySQL, MapStruct, Lombok)  
