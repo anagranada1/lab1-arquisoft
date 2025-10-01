@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate, Link } from 'react-router-dom'
 import CustomersList from './pages/CustomersList'
 import CustomerNew from './pages/CustomerNew'
+import CustomerEdit from './pages/CustomerEdit'
 import TransactionsList from './pages/TransactionsList'
 import TransactionNew from './pages/TransactionNew'
 
@@ -23,6 +24,7 @@ export default function App(){
           <Route path="/" element={<Navigate to="/customers" replace />}/>
           <Route path="/customers" element={<CustomersList />}/>
           <Route path="/customers/new" element={<CustomerNew />}/>
+          <Route path="/customers/:id/edit" element={<CustomerEdit />}/>
           <Route path="/transactions" element={<TransactionsList />}/>
           <Route path="/transactions/new" element={<TransactionNew />}/>
           <Route path="*" element={<div>404</div>}/>

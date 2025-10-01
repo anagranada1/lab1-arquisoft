@@ -1,5 +1,10 @@
 import { useEffect, useMemo, useState } from 'react'
 import { api } from '../api/client'
+import { Link } from 'react-router-dom';
+
+function ConfirmButton({ onConfirm, children }){
+  return <button onClick={() => { if (confirm('¿Seguro que deseas borrar este cliente?')) onConfirm(); }}>{children}</button>;
+}
 
 function money(n){
   return new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(n || 0)
@@ -50,6 +55,16 @@ export default function CustomersList(){
   const safePage = Math.min(page, totalPages)
   const slice = filtered.slice((safePage - 1) * pageSize, (safePage - 1) * pageSize + pageSize)
 
+  async function deleteCustomer(id){
+      try {
+        await api.delete(`/customers/${id}`);
+        // quita el registro localmente
+        setRows(prev => prev.filter(r => r.id !== id));
+      } catch (e){
+        alert(e?.response?.data || e?.message || 'Error eliminando el cliente');
+      }
+    }
+
   return (
     <div>
       <h2 style={{ marginTop: 0 }}>Customers</h2>
@@ -80,6 +95,7 @@ export default function CustomersList(){
                 <Th>Apellido</Th>
                 <Th>Número de cuenta</Th>
                 <Th style={{ textAlign:'right' }}>Balance</Th>
+                <Th style={{ textAlign:'center' }}>Acciones</Th>
               </tr>
             </thead>
             <tbody>
@@ -90,6 +106,10 @@ export default function CustomersList(){
                   <Td>{r.lastName ?? ''}</Td>
                   <Td>{r.accountNumber ?? ''}</Td>
                   <Td style={{ textAlign:'right' }}>{money(r.balance)}</Td>
+                  <Td style={{ textAlign:'center' }}>
+                      <Link to={`/customers/${r.id}/edit`}><button>Editar</button></Link>{' '}
+                      <ConfirmButton onConfirm={() => deleteCustomer(r.id)}>Eliminar</ConfirmButton>
+                  </Td>
                 </tr>
               )) : (
                 <tr><Td colSpan={5} style={{ color:'#6b7280' }}>Sin resultados</Td></tr>

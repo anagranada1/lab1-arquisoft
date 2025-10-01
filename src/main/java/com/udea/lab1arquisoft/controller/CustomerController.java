@@ -43,5 +43,24 @@ public class CustomerController {
         return ResponseEntity.ok(customerService.createCustomer(customerDTO));
     }
 
+    //Actualizar un cliente
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateCustomer(@PathVariable Long id, @RequestBody CustomerDTO customerDTO){
+        try {
+            return ResponseEntity.ok(customerService.updateCustomer(id, customerDTO));
+        } catch (IllegalArgumentException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 
+    //Borrar un cliente
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteCustomer(@PathVariable Long id){
+        try {
+            customerService.deleteCustomer(id);
+            return ResponseEntity.noContent().build();
+        } catch (RuntimeException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 }
