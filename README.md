@@ -1,6 +1,7 @@
 # 🏦 Lab1 Arquisoft — Guía de ejecución (Backend + Frontend)
 
 Laboratorio realizado por:
+
 Ana María Granada Rodas  
 Jesus Estiven Torres Quintero   
 Juan Pablo Ramos Vélez 
